@@ -1,0 +1,72 @@
+/* css/style.css */
+:root {
+    --txt: #333;
+    --btn: #93c572;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f0f0f0;
+  color: var(--txt);
+}
+
+header {
+    text-align: center;
+}
+
+h1 {
+    text-transform: uppercase;
+}
+
+#themeToggle {
+    background: none !important;
+    font-size: 2rem;
+    color: var(--txt);
+}
+
+#plantContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+#plant {
+  width: 400px;
+  height: 400px;
+  background-color: transparent;
+  margin-bottom: 20px;
+}
+
+#plant img {
+    width: 100%;
+    height: 100%;
+}
+
+#thirstBarContainer {
+  width: 40%;
+  background-color: lightgray;
+  height: 25px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+#thirstBar {
+  height: 100%;
+  background-color: #6495ED;
+  width: 100%;
+  transition: width 1s linear;
+}
+
+button {
+  padding: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  background-color: var(--btn);
+  color: white;
+  border-radius: 5px;
+}
