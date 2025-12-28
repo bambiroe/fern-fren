@@ -1,33 +1,54 @@
 "use strict";
 // src/app.ts
+// ------ Thirst System ------
 let thirstLevel = 100;
-let thirstDepletionRate = 0.2;
+let thirstDepletionRate = 0.5;
 const thirstBar = document.getElementById("thirstBar");
-// Function to update the thirst bar
 function updateThirstBar() {
     thirstLevel -= thirstDepletionRate;
     if (thirstLevel <= 0) {
         thirstLevel = 0;
-        alert("Your plant is too thirsty! Water it soon!");
+        alert("Your plant is thirsty! Water it soon!");
     }
     thirstBar.style.width = `${thirstLevel}%`;
 }
-// Deplete the thirst bar every second
 setInterval(updateThirstBar, 1000);
-// Toggle between day and night mode
-const themeToggle = document.getElementById("themeToggle");
-let isDayTime = true; // Start with day mode
-themeToggle.addEventListener("click", () => {
-    isDayTime = !isDayTime;
-    document.body.style.backgroundColor = isDayTime ? "#f0f0f0" : "#2c3e50"; // Day/Night colors
-    // Use innerHTML to insert the icons properly
-    themeToggle.innerHTML = isDayTime ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>';
-});
-// Optionally, add a reset button to refill the thirst
-const resetButton = document.createElement("button");
-resetButton.textContent = "Water the plant!";
-document.body.appendChild(resetButton);
-resetButton.addEventListener("click", () => {
+// ------ Water the fern ------
+const waterButton = document.createElement("button");
+waterButton.textContent = "WATER :)";
+waterButton.id = "water-btn";
+document.body.appendChild(waterButton);
+waterButton.addEventListener("click", () => {
     thirstLevel = 100;
     thirstBar.style.width = "100%";
+    thirstBar.classList.add("watering");
+    setTimeout(() => thirstBar.classList.remove("watering"), 400);
+});
+// ------ Toggle day/night ------
+const themeToggle = document.getElementById("themeToggle");
+const themeIcon = document.getElementById("themeIcon");
+let isDayTime = true;
+themeToggle.addEventListener("click", () => {
+    // Animate current icon out
+    themeIcon.classList.add("rotate-out");
+    setTimeout(() => {
+        // Toggle state
+        isDayTime = !isDayTime;
+        // Swap icon
+        themeIcon.src = isDayTime
+            ? "assets/icons/sun.svg"
+            : "assets/icons/moon.svg";
+        themeIcon.alt = isDayTime ? "Day mode" : "Night mode";
+        // Toggle background + class
+        document.body.style.backgroundColor = isDayTime
+            ? "#f0f0f0"
+            : "#2c3e50";
+        document.body.classList.toggle("night", !isDayTime);
+        // Animate new icon in
+        themeIcon.classList.remove("rotate-out");
+        themeIcon.classList.add("rotate-in");
+        setTimeout(() => {
+            themeIcon.classList.remove("rotate-in");
+        }, 600);
+    }, 300);
 });
