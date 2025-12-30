@@ -4,27 +4,26 @@
   --bg: #ecf5f5;
   --brdr: #2b2b60;
   --btn: #93c572;
+  --btn-dark: #455f36;
   --txt: #333;
 }
 
 @font-face {
-  font-family: "Silkscreen";
-  src: url("../assets/fonts/Silkscreen-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Amaranth";
+    src: url("../assets/fonts/Amaranth-Regular.ttf") format("truetype");
+    font-weight: 400;
 }
 
 @font-face {
-  font-family: "Silkscreen";
-  src: url("../assets/fonts/Silkscreen-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
+    font-family: "Amaranth";
+    src: url("../assets/fonts/Amaranth-Bold.ttf") format("truetype");
+    font-weight: 700;
 }
 
 /* ----------- Base ----------- */
 
 body {
-  font-family: "Silkscreen", sans-serif;  
+  font-family: "Amaranth", sans-serif;  
   text-align: center;
   background-color: var(--bg);
   color: var(--txt);
@@ -73,7 +72,7 @@ a {
 
 #sky {
   height: 65%;
-  background: linear-gradient(to bottom, #bfe9ff, #e8f8ff);
+  background: linear-gradient(to bottom, #e8f8ff, #bfe9ff);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,7 +80,7 @@ a {
 }
 
 body.night #sky {
-  background: linear-gradient(to bottom, #31356e, #384b6e);
+  background: linear-gradient(to bottom, #4a5f99, #2c3461);
 }
 
 body::after {
@@ -170,7 +169,7 @@ body.night .rotate-out {
 }
 
 #thirstBar.dry {
-  background: #cc6e49;
+  background: linear-gradient(to right, #a0664f, #f09a79);
 }
 
 #thirstBar.watering {
@@ -205,13 +204,13 @@ body.night .rotate-out {
 #water-btn {
   padding: 10px;
   background-color: var(--btn);
-  font-family: "Silkscreen", sans-serif; 
+  font-family: "Amaranth", sans-serif;
   font-size: 1.25rem;
   letter-spacing: 0.3px;
-  color: #455f36;
+  color: var(--btn-dark);
   border-radius: 5px;
-  border: 1px solid #455f36;
-  box-shadow: 1px 1px 0 1px #455f36;
+  border: 1px solid var(--btn-dark);
+  box-shadow: 1px 1px 0 1px var(--btn-dark);
   cursor: pointer;
 }
 

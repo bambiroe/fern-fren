@@ -18,21 +18,32 @@ function updateThirst() {
 }
 // ----------- Sunlight system -----------
 let sunlightLevel = 50;
-const SUNLIGHT_RATE = 0.5;
-const MAX_SEPIA = 100;
+const SUNLIGHT_CHANGE_RATE = 0.5;
 const sunBar = document.getElementById("sunBar");
 const plantImage = document.querySelector("#plant img");
 function updateSunlight() {
     if (isDayTime) {
-        sunlightLevel += SUNLIGHT_RATE;
+        sunlightLevel += SUNLIGHT_CHANGE_RATE;
     }
     else {
-        sunlightLevel -= SUNLIGHT_RATE;
+        sunlightLevel -= SUNLIGHT_CHANGE_RATE;
     }
-    const sepiaAmount = ((100 - sunlightLevel) / 100) * MAX_SEPIA;
-    plantImage.style.filter = `sepia(${sepiaAmount}%)`;
     sunlightLevel = Math.max(0, Math.min(99, sunlightLevel));
+    updatePlantAppearance();
     sunBar.style.width = `${sunlightLevel}%`;
+}
+// ----------- Plant appearance -----------
+const MAX_SEPIA = 60;
+const MAX_GREY = 60;
+function updatePlantAppearance() {
+    if (sunlightLevel >= 50) {
+        const sepiaAmount = ((sunlightLevel - 50) / 50) * MAX_SEPIA;
+        plantImage.style.filter = `sepia(${sepiaAmount}%)`;
+    }
+    else {
+        const greyAmount = ((50 - sunlightLevel) / 50) * MAX_GREY;
+        plantImage.style.filter = `grayscale(${greyAmount}%)`;
+    }
 }
 // ----------- Global update loop -----------
 setInterval(() => {
