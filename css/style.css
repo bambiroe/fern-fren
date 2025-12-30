@@ -140,6 +140,7 @@ body.night .rotate-out {
 
 #plant {
   z-index: 997;
+  pointer-events: none;
   width: 280px;
   margin-bottom: 30px;
 }
@@ -156,7 +157,7 @@ body.night .rotate-out {
   height: 25px;
   border-radius: 12px;
   overflow: hidden;
-  background-color: lightgray;
+  background-color: #dddddd;
   border: 1px solid var(--brdr);
   box-shadow: 1px 1px 0 1px var(--brdr);
 }
@@ -168,8 +169,35 @@ body.night .rotate-out {
   transition: width 1s linear;
 }
 
-.watering {
+#thirstBar.dry {
+  background: #cc6e49;
+}
+
+#thirstBar.watering {
   filter: brightness(1.2);
+}
+
+/* ----------- Light Bar ----------- */
+
+#sunBarContainer {
+  position: relative;
+  width: 25rem;
+  margin: 0 auto 1.5rem;
+  height: 25px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(to right, #7ba5f3, #f09a79, #e6e0b6);
+  border: 1px solid var(--brdr);
+  box-shadow: 1px 1px 0 1px var(--brdr);
+}
+
+#sunBar {
+  z-index: 1;
+  position: relative;
+  height: 100%;
+  width: 50%;
+  background: transparent;
+  border-right: 5px solid var(--brdr);
 }
 
 /* ----------- Water Button ----------- */
