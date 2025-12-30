@@ -1,58 +1,117 @@
 /* css/style.css */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap');
 
 :root {
-    --txt: #333;
-    --btn: #93c572;
+  --bg: #ecf5f5;
+  --brdr: #2b2b60;
+  --btn: #93c572;
+  --txt: #333;
 }
 
+@font-face {
+  font-family: "Silkscreen";
+  src: url("../assets/fonts/Silkscreen-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Silkscreen";
+  src: url("../assets/fonts/Silkscreen-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* ----------- Base ----------- */
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Silkscreen", sans-serif;  
   text-align: center;
-  background-color: #f2fafa;
+  background-color: var(--bg);
   color: var(--txt);
 }
 
 header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
 }
 
 .title-svg {
+  z-index: 998;
   pointer-events: none;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 1rem;
-  margin-bottom: -5rem;
   width: 500px;
   max-width: 90vw;
-
+  margin-top: 1rem;
+  margin-bottom: -4.5rem;
   animation: floatTitle 2s ease-in-out infinite;
 }
 
 @keyframes floatTitle {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(10px); }
+  0% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
   100% { transform: translateY(0); }
 }
 
-h1 {
-    text-transform: uppercase;
+a {
+  color: var(--txt);
+  text-decoration: none;
 }
+
+/* ----------- Window ----------- */
+
+#window {
+  width: 25rem;
+  height: 35rem;
+  margin: 0 auto 2rem;
+  border-radius: 10px;
+  border: 2px solid var(--brdr);
+  box-shadow: 2px 2px 0 2px var(--brdr);
+  overflow: hidden;
+  position: relative;
+}
+
+/* ----------- Sky ----------- */
+
+#sky {
+  height: 65%;
+  background: linear-gradient(to bottom, #bfe9ff, #e8f8ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.8s ease;
+}
+
+body.night #sky {
+  background: linear-gradient(to bottom, #31356e, #384b6e);
+}
+
+body::after {
+  z-index: 999;
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: #1c2540;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+}
+
+body.night::after {
+  opacity: 0.5;
+}
+
+/* ----------- Sun / Moon ----------- */
 
 #themeToggle {
   background: none;
   border: none;
-  padding: 0;
+  cursor: pointer;
 }
 
 #themeToggle img {
-  z-index: 999;
-  height: 100px;
-  width: 100px;
-  
+  z-index: 997;
+  width: 10rem;
+  height: 10rem;
+  margin-top: -10rem;
   transition:
     transform 0.6s ease,
     opacity 0.3s ease;
@@ -67,64 +126,97 @@ body.night .rotate-out {
   transform: rotate(-180deg) scale(0.8);
 }
 
-#plantContainer {
+/* ----------- Shelf ----------- */
+
+#shelf {
+  height: 35%;
+  background-color: #836559;
+  border-top: 2px solid #705347;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  margin-top: 50px;
+  align-items: flex-end;
+  position: relative;
 }
 
 #plant {
-  width: 400px;
-  height: 400px;
-  background-color: transparent;
-  margin-bottom: 20px;
+  z-index: 997;
+  width: 280px;
+  margin-bottom: 30px;
 }
 
 #plant img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
 }
 
+/* ----------- Thirst Bar ----------- */
+
 #thirstBarContainer {
-  width: 40%;
-  background-color: lightgray;
+  width: 25rem;
+  margin: 0 auto 1rem;
   height: 25px;
-  overflow: hidden;
-  margin-bottom: 20px;
   border-radius: 12px;
-  border: 1px solid #2b2b60;
-  box-shadow: 1px 1px 0 1px #2b2b60;
+  overflow: hidden;
+  background-color: lightgray;
+  border: 1px solid var(--brdr);
+  box-shadow: 1px 1px 0 1px var(--brdr);
 }
 
 #thirstBar {
   height: 100%;
   width: 100%;
-  background-color: #6495ed;
-  background: linear-gradient(
-    to right,
-    #4c6cb3,
-    #6495ed
-  );
+  background: linear-gradient(to right, #4c6cb3, #6495ed);
   transition: width 1s linear;
 }
 
+.watering {
+  filter: brightness(1.2);
+}
+
+/* ----------- Water Button ----------- */
+
 #water-btn {
   padding: 10px;
-  cursor: pointer;
   background-color: var(--btn);
-  font-family: "Poppins", sans-serif;
-  font-weight: 600;
-  font-size: 18px;
+  font-family: "Silkscreen", sans-serif; 
+  font-size: 1.25rem;
   letter-spacing: 0.3px;
   color: #455f36;
   border-radius: 5px;
   border: 1px solid #455f36;
   box-shadow: 1px 1px 0 1px #455f36;
+  cursor: pointer;
 }
 
-.watering {
-  filter: brightness(1.2);
-  transition: 0.5s;
+/* ----------- Footer ----------- */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+}
+
+footer p {
+  z-index: 998;
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.3;
+
+  padding: 0.5rem;
+  width: auto;
+  border-radius: 5px;
+  border: 1px solid var(--txt);
+  background-color: var(--bg);
+  color: var(--txt);
+}
+
+footer p:hover {
+  border: 1px solid var(--btn);
+}
+
+footer p:hover a {
+  color: var(--btn);
 }

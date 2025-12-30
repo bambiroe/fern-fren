@@ -5,39 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fern Fren</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <header>
-        <object
+      <object
         data="assets/title.svg"
         type="image/svg+xml"
         class="title-svg"
         width="500"
         height="200"
-        aria-label="Fern Fren title">
-        </object>    
-        <br /> 
-        <button id="themeToggle" aria-label="Toggle day/night">
-          <img
-            id="themeIcon"
-            src="assets/icons/sun.svg"
-            alt="Day mode"
-          />
-        </button>        
+        alt="Fern Fren title">
+      </object>
     </header>
 
     <main>
-        <div id="plantContainer">
-        <div id="plant">
-            <img src="assets/fern.png">
+      <!----------- WINDOW ----------->
+      <div id="window">
+        <!----------- SKY ----------->
+        <div id="sky">
+          <button id="themeToggle" aria-label="Toggle day/night">
+            <img
+              id="themeIcon"
+              src="assets/icons/sun.svg"
+              alt="Day mode"
+            />
+          </button>
         </div>
-        <div id="thirstBarContainer">
-            <div id="thirstBar"></div>
+
+        <!----------- SHELF ----------->
+        <div id="shelf">
+          <div id="plant">
+            <img src="assets/fern.png" alt="Fern" />
+          </div>
         </div>
-        </div>
+      </div>
+
+      <!----------- THIRST BAR ----------->
+      <div id="thirstBarContainer">
+        <div id="thirstBar"></div>
+      </div>
+
+      <!----------- WATER BUTTON ----------->
+      <button id="water-btn">WATER</button>
     </main>
+
+    <footer>
+      <p>
+        <a href="https://github.com/bambiroe">@ bambiroe</a>
+      </p>
+    </footer>
 
     <script src="dist/app.js"></script>
   </body>

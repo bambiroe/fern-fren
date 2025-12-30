@@ -1,15 +1,16 @@
 // src/app.ts
-// ------ Thirst System ------
+// ----------- Thirst system -----------
+const THIRST_DEPLETION_RATE = 0.5;
 let thirstLevel: number = 100;
-let thirstDepletionRate: number = 0.5;
+
 const thirstBar = document.getElementById("thirstBar") as HTMLElement;
 
 function updateThirstBar(): void {
-  thirstLevel -= thirstDepletionRate;
+  thirstLevel -= THIRST_DEPLETION_RATE;
 
   if (thirstLevel <= 0) {
     thirstLevel = 0;
-    alert("Your plant is thirsty! Water it soon!");
+    alert("Your fern is thirsty! Water it.");
   }
 
   thirstBar.style.width = `${thirstLevel}%`;
@@ -17,56 +18,37 @@ function updateThirstBar(): void {
 
 setInterval(updateThirstBar, 1000);
 
-// ------ Water the fern ------
-const waterButton: HTMLButtonElement = document.createElement("button");
-
-waterButton.textContent = "WATER :)";
-waterButton.id = "water-btn";
-
-document.body.appendChild(waterButton);
+// ----------- Water button -----------
+const waterButton = document.getElementById("water-btn") as HTMLButtonElement;
 
 waterButton.addEventListener("click", () => {
   thirstLevel = 100;
   thirstBar.style.width = "100%";
-  thirstBar.classList.add("watering");
 
+  thirstBar.classList.add("watering");
   setTimeout(() => thirstBar.classList.remove("watering"), 400);
 });
 
-// ------ Toggle day/night ------
+// ----------- Day / Night toggle -----------
 const themeToggle = document.getElementById("themeToggle") as HTMLButtonElement;
 const themeIcon = document.getElementById("themeIcon") as HTMLImageElement;
 
 let isDayTime: boolean = true;
 
 themeToggle.addEventListener("click", () => {
-  // Animate current icon out
   themeIcon.classList.add("rotate-out");
 
   setTimeout(() => {
-    // Toggle state
     isDayTime = !isDayTime;
 
-    // Swap icon
     themeIcon.src = isDayTime
       ? "assets/icons/sun.svg"
       : "assets/icons/moon.svg";
 
     themeIcon.alt = isDayTime ? "Day mode" : "Night mode";
 
-    // Toggle background + class
-    document.body.style.backgroundColor = isDayTime
-      ? "#f0f0f0"
-      : "#2c3e50";
-
     document.body.classList.toggle("night", !isDayTime);
 
-    // Animate new icon in
     themeIcon.classList.remove("rotate-out");
-    themeIcon.classList.add("rotate-in");
-
-    setTimeout(() => {
-      themeIcon.classList.remove("rotate-in");
-    }, 600);
   }, 300);
 });
