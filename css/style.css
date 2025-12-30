@@ -27,11 +27,20 @@ body {
   text-align: center;
   background-color: var(--bg);
   color: var(--txt);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 header {
   display: flex;
   justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .title-svg {
+    margin-bottom: -3rem;
+    width: 90vw;
+  }
 }
 
 .title-svg {
@@ -58,8 +67,8 @@ a {
 /* ----------- Window ----------- */
 
 #window {
-  width: 25rem;
-  height: 35rem;
+  width: min(90vw, 25rem);
+  height: min(70vh, 35rem);
   margin: 0 auto 2rem;
   border-radius: 10px;
   border: 2px solid var(--brdr);
@@ -100,6 +109,14 @@ body.night::after {
 
 /* ----------- Sun / Moon ----------- */
 
+@media (max-width: 600px) {
+  #themeToggle img {
+    width: 7rem;
+    height: 7rem;
+    margin-top: -6rem;
+  }
+}
+
 #themeToggle {
   background: none;
   border: none;
@@ -107,7 +124,6 @@ body.night::after {
 }
 
 #themeToggle img {
-  z-index: 997;
   width: 10rem;
   height: 10rem;
   margin-top: -10rem;
@@ -138,7 +154,6 @@ body.night .rotate-out {
 }
 
 #plant {
-  z-index: 997;
   pointer-events: none;
   width: 280px;
   margin-bottom: 30px;
@@ -151,10 +166,11 @@ body.night .rotate-out {
 /* ----------- Thirst Bar ----------- */
 
 #thirstBarContainer {
-  width: 25rem;
+  position: relative;
+  width: min(90vw, 25rem);
   margin: 0 auto 1rem;
   height: 25px;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
   background-color: #dddddd;
   border: 1px solid var(--brdr);
@@ -180,10 +196,10 @@ body.night .rotate-out {
 
 #sunBarContainer {
   position: relative;
-  width: 25rem;
+  width: min(90vw, 25rem);
   margin: 0 auto 1.5rem;
   height: 25px;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: hidden;
   background: linear-gradient(to right, #7ba5f3, #f09a79, #e6e0b6);
   border: 1px solid var(--brdr);
@@ -191,7 +207,6 @@ body.night .rotate-out {
 }
 
 #sunBar {
-  z-index: 1;
   position: relative;
   height: 100%;
   width: 50%;
@@ -202,19 +217,34 @@ body.night .rotate-out {
 /* ----------- Water Button ----------- */
 
 #water-btn {
+  min-height: 44px;
   padding: 10px;
   background-color: var(--btn);
   font-family: "Amaranth", sans-serif;
   font-size: 1.25rem;
   letter-spacing: 0.3px;
   color: var(--btn-dark);
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid var(--btn-dark);
   box-shadow: 1px 1px 0 1px var(--btn-dark);
   cursor: pointer;
 }
 
 /* ----------- Footer ----------- */
+
+@media (max-width: 600px) {
+  main {
+    padding-bottom: 2rem;
+  }
+
+  footer p {
+    top: auto;
+    bottom: 1rem;
+    right: 50% !important;
+    transform: translateX(50%);
+  }
+}
+
 footer {
   text-align: center;
   padding: 1.5rem;
@@ -224,17 +254,17 @@ footer {
 footer p {
   z-index: 998;
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
+  bottom: 1rem;
+  right: 1rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0.3;
 
-  padding: 0.5rem;
+  padding: 0.1rem 0.5rem;
   width: auto;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid var(--txt);
   background-color: var(--bg);
   color: var(--txt);
