@@ -56,8 +56,12 @@ waterButton.addEventListener("click", () => {
     thirstLevel = 100;
     thirstBar.style.width = "100%";
     thirstBar.classList.remove("dry");
-    thirstBar.classList.add("watering");
-    setTimeout(() => thirstBar.classList.remove("watering"), 400);
+    plantImage.classList.add("watering");
+    thirstBar.style.filter = "brightness(1.2)";
+    setTimeout(() => {
+        plantImage.classList.remove("watering");
+        thirstBar.style.filter = "brightness(1)";
+    }, 400);
 });
 // ----------- Day / Night toggle -----------
 const themeToggle = document.getElementById("themeToggle");

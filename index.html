@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fern Fren</title>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -42,12 +42,12 @@
       </div>
 
       <!----------- THIRST BAR ----------->
-      <div id="thirstBarContainer" aria-live="polite">
+      <div id="thirstBarContainer" role="progressbar" aria-label="Plant Hydration" aria-valuemin="0" aria-valuemax="100">
         <div id="thirstBar"></div>
       </div>
 
       <!----------- LIGHT BAR ----------->
-      <div id="sunBarContainer" aria-live="polite">
+      <div id="sunBarContainer" role="progressbar" aria-label="Sunlight Exposure" aria-valuemin="0" aria-valuemax="100">
         <div id="sunBar"></div>
       </div>
 
@@ -57,7 +57,7 @@
 
     <footer>
       <p>
-        <a href="https://github.com/bambiroe">by bambiroe</a>
+        <a href="https://github.com/bambiroe">bambiroe <i class="fa-brands fa-github"></i></a>
       </p>
     </footer>
 
