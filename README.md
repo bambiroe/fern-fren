@@ -41,11 +41,13 @@ git clone https://github.com/bambiroe/fern-fren.git
 ```
 
 **2.** Install dependencies:
+
 ```bash
 npm install
 ```
 
 **3.** Compile & Run:
+
 ```bash
 npx tsc && python3 -m http.server
 ```
